@@ -18,9 +18,12 @@ services:
       - POSTGRES_DB=onlinejudge
       - POSTGRES_USER=onlinejudge
       - POSTGRES_PASSWORD=onlinejudge
-
+    ports:
+      - "0.0.0.0:5111:5432"
+    
+     
   judge-server:
-    image: registry.cn-hangzhou.aliyuncs.com/onlinejudge/judge_server
+    image: registry.cn-hangzhou.aliyuncs.com/dailiyun/oj_server
     container_name: judge-server
     restart: always
     read_only: true
@@ -43,7 +46,7 @@ services:
       - TOKEN=CHANGE_THIS
   
   oj-backend:
-    image: registry.cn-hangzhou.aliyuncs.com/onlinejudge/oj_backend
+    image: registry.cn-hangzhou.aliyuncs.com/dailiyun/oj_back
     container_name: oj-backend
     restart: always
     depends_on:
